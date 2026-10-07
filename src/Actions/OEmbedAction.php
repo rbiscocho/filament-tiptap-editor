@@ -38,7 +38,9 @@ class OEmbedAction extends Action
                     ->gridDirection('row')
                     ->columns(3)
                     ->visible(function (callable $get) {
-                        return ! (str_contains($get('url'), 'vimeo') || str_contains($get('url'), 'youtube') || str_contains($get('url'), 'youtu.be'));
+                        $url = (string) ($get('url') ?? '');
+
+                        return ! (str_contains($url, 'vimeo') || str_contains($url, 'youtube') || str_contains($url, 'youtu.be'));
                     })
                     ->options([
                         'autoplay' => trans('filament-tiptap-editor::oembed-modal.labels.autoplay'),
