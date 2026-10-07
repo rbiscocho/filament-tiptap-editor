@@ -52,7 +52,9 @@ class OEmbedAction extends Action
                     ->gridDirection('row')
                     ->columns(3)
                     ->visible(function (callable $get) {
-                        return str_contains($get('url'), 'vimeo');
+                        $url = (string) ($get('url') ?? '');
+
+                        return str_contains($url, 'vimeo');
                     })
                     ->options([
                         'autoplay' => trans('filament-tiptap-editor::oembed-modal.labels.autoplay'),
@@ -90,7 +92,9 @@ class OEmbedAction extends Action
                             return Carbon::parse($state)->diffInSeconds('00:00:00');
                         }),
                 ])->visible(function (callable $get) {
-                    return str_contains($get('url'), 'youtube') || str_contains($get('url'), 'youtu.be');
+                    $url = (string) ($get('url') ?? '');
+
+                    return str_contains($url, 'youtube') || str_contains($url, 'youtu.be');
                 }),
                 Checkbox::make('responsive')
                     ->default(true)
