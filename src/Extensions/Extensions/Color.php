@@ -31,7 +31,7 @@ class Color extends Extension
                         },
                         'renderHTML' => function ($attributes) {
                             if (
-                                (property_exists($attributes, 'style') && str_contains($attributes->style, 'color')) ||
+                                (property_exists($attributes, 'style') && str_contains((string) ($attributes->style ?? ''), 'color')) ||
                                 (! property_exists($attributes, 'color') || ! $attributes->color)
                             ) {
                                 return null;
