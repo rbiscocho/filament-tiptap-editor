@@ -106,7 +106,7 @@ class LinkAction extends Action
                             ->color('danger')
                             ->extraAttributes(function () use ($action) {
                                 return [
-                                    'x-on:click' => new HtmlString("\$dispatch('unset-link', {'statePath': '{$action->getComponent()->getStatePath()}'}); close()"),
+                                    'x-on:click' => new HtmlString("\$dispatch('unset-link', {'statePath': '{$action->getSchemaComponent()?->getStatePath()}'}); close()"),
                                     'style' => 'margin-inline-start: auto;',
                                 ];
                             }),
